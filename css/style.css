@@ -138,7 +138,7 @@ body {
 }
 
 .content__right {
-    background: var(--color-6);
+    background: transparent;
     border-radius: 1rem;
     padding: 5rem 3rem;
     color: var(--color-3);
@@ -146,6 +146,10 @@ body {
 
 .content__right div {
     margin-bottom: 2.2rem;
+}
+
+.content .content__updatedTime {
+    margin-top: 5rem;
 }
 
 /* MEDIA QUERIES */
