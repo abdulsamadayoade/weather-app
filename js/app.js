@@ -7,12 +7,6 @@ const contentRight = document.querySelector('.content__right');
 const url = 'https://api.openweathermap.org/data/2.5/weather?q=';
 const api_key = "&appid=ed8f365451589d3c93eeeace0e21276d";
 
-function searchFunc(e) {
-    if (e.keyCode == 13) {
-        searchCity();
-    }
-}
-
 // SHOW THE CLEAR ICON AFTER THE USER START TYPING
 searchField.addEventListener('keyup', () => {
     closeSearch.style.display = 'block';
@@ -42,7 +36,7 @@ searchCity = () => {
         .then((response) => response.json())
         .then((result) => {
             if(result.cod == 404) {
-                console.log('Error');
+                errorSection.style.display = 'flex';
             } else {
                 contentRight.style.backgroundColor = '#56c2e6';
                 setCity(result.name);
@@ -64,6 +58,13 @@ searchCity = () => {
 }
 
 searchBtn.addEventListener('click', searchCity);
+
+// SEARCH FUNCTIONALITY WHEN THE ENTER KEY IS PRESSED IN THE SEARCH BOX
+function searchFunc(e) {
+    if (e.keyCode == 13) {
+        searchCity();
+    }
+}
 
 // SET CITY NAME
 setCity = (el) => {
@@ -135,3 +136,11 @@ setTempMax = (el) => {
 setTempMin = (el) => {
     document.querySelector('.content__temp-min').innerHTML = 'Temp. Min: '+ Math.floor((el-273)) + ' C  /  '+ Math.floor((el-273) * 9/5) + ' F';
 }
+
+// ERROR SECTION
+const errorSection = document.querySelector('.error');
+const homeBtn = document.querySelector('.go-home');
+
+homeBtn.addEventListener('click', () => {
+    errorSection.style.display = 'none';
+});
