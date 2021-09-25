@@ -7,6 +7,11 @@ const contentRight = document.querySelector('.content__right');
 const url = 'https://api.openweathermap.org/data/2.5/weather?q=';
 const api_key = "&appid=ed8f365451589d3c93eeeace0e21276d";
 
+function searchFunc(e) {
+    if (e.keyCode == 13) {
+        searchCity();
+    }
+}
 
 // SHOW THE CLEAR ICON AFTER THE USER START TYPING
 searchField.addEventListener('keyup', () => {
